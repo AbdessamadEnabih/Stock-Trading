@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: app
+      MONGO_INITDB_ROOT_PASSWORD: app123456789
+    volumes:
+      - volumes/mongo-data:/data/db
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./api:/stock-trading/api
+    depends_on:
+      - db
+    environment:
+      - MONGO_URI=mongodb://db:27017/your_db_name
+    networks:
+      - default
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/stock-trading/client
+      - /stock-trading/client/node_modules
+    depends_on:
+      - api
+    networks:
+      - default
+
+  
