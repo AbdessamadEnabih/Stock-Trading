@@ -1,1 +1,22 @@
-FROM mongo:latest
+FROM node:18
+
+WORKDIR /stock-trading/client
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Remove node_modules and package-lock.json to ensure a clean install
+RUN rm -rf node_modules package-lock.json
+
+# Install the application's dependencies
+RUN npm install
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the application in development mode
+
+CMD [ "npm", "run", "dev" ]
