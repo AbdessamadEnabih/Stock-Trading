@@ -3,7 +3,7 @@ services:
     image: mongo:latest
     restart: always
     ports:
-      - "27017:27017"
+      - "27018:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: app
       MONGO_INITDB_ROOT_PASSWORD: app123456789
@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     environment:
-      - MONGO_URI=mongodb://db:27017/your_db_name
+      - MONGO_URI=mongodb://app:app123456789@db:27018/stock-trading
     networks:
       - mynet
 
