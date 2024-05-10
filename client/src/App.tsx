@@ -1,20 +1,16 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import "./App.css";
 import Test from './components/Test'
-import { Button } from 'react-bootstrap'
+import Home from './components/Home'
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Test />
-      <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)} variant="secondary">
-          Hello {count}
-        </Button>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path='/t' element={<Test/>}></Route>
+        <Route path='/h' element={<Home/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
