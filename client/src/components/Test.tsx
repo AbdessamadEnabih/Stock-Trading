@@ -1,5 +1,5 @@
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
 function Test() {
   return (
@@ -14,5 +14,4 @@ function Test() {
   );
 }
 
-
-export default Test
+export default Test;
