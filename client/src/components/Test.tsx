@@ -1,16 +1,19 @@
-import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 
 function Test() {
   return (
-    <div>
-      <h1>
-        Example heading
-        <Badge bg="secondary" as={Button}>
-          New
-        </Badge>
-      </h1>
-    </div>
+    <Alert status="error">
+      <AlertIcon />
+      <AlertTitle>Your browser is outdated!</AlertTitle>
+      <AlertDescription>
+        Your Chakra experience may be degraded.
+      </AlertDescription>
+    </Alert>
   );
 }
 
